@@ -369,6 +369,7 @@
     no_proxy: "{{ vault_api_addr | urlsplit('hostname') }}"
   uri:
     validate_certs: "{{ validate_certs_during_api_reachable_check | bool }}"
+    ca_path: "{{ vault_tls_certs_path }}/{{ vault_tls_ca_file }}"
     url: "{{ vault_api_addr }}/v1/sys/health"
     method: GET
     # 200 if initialized, unsealed, and active
